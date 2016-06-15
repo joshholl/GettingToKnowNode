@@ -29,4 +29,15 @@ Node is not a server, it is just a platform on which one can be built
  - Thanks to Angular and other Front End Frameworks, Javascript is no longer just some glue for interactivity, its a First Class language for creating applications. Node.JS makes Javascript a first class language for the back end.
  - Node.JS is easily scaled. The builtin cluster module allows you to share a single port across multiple child processes. 
  - Easy setup. Unlike Apache and the myriad of *.conf files, you deploy node and then your code.
- 
+
+---
+# Getting Started
+ - Node.JS can be downloaded from https://nodejs.org (this talk assumes 6.2.1 or higher, but should work on 4.4.X)
+ - Can be installed on Windows, Mac, or Linux
+ - May not want to install via apt-get or distro package manager if you are wanting later versions
+--
+ **Node.JS versions prior to 4.X.X are using older versions of V8, if you want ES6 support you should use 4.X.X or higher
+--
+ - NVM (node version manager) can also be used to install Node.JS
+ - To run a script, execute node <scriptname>.js
+
