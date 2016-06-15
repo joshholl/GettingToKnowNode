@@ -41,3 +41,14 @@ Node is not a server, it is just a platform on which one can be built
  - NVM (node version manager) can also be used to install Node.JS
  - To run a script, execute node <scriptname>.js
 
+---
+ # Diving in - Non-Blocking, Asynchronous I/O
+ - I/O uses two different concurrency models: Synchronous and Asynchronous
+ - In synchronous i/o, a file read will block waiting on the file system for data before continuing on.
+ - In asynchronous, one or more parts of an application may continue and wait for a callback to notify of a change
+ - Synchronous can be easier to use, however comes at a performance penalty
+ - Asynchronous can be slightly more difficult but can have huge performance implications.
+
+ 
+  
+
