@@ -25,9 +25,8 @@ Node is not a server, it is just a platform on which one can be built
 
 **Its important to remember that Node.js is not a server, its a platform on which to create servers.**
 
- - Node is fast, very fast
- - Scalable 
- - Javascript is becoming lingua franca
-
-
-
+ - By using non-blocking, asynchronous i/o Node.JS is exceptionally fast
+ - Thanks to Angular and other Front End Frameworks, Javascript is no longer just some glue for interactivity, its a First Class language for creating applications. Node.JS makes Javascript a first class language for the back end.
+ - Node.JS is easily scaled. The builtin cluster module allows you to share a single port across multiple child processes. 
+ - Easy setup. Unlike Apache and the myriad of *.conf files, you deploy node and then your code.
+ 
