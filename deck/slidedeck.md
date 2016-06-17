@@ -52,6 +52,11 @@ Node is not a server, it is just a platform on which one can be built
  - "Things Happen" based on events that occur rather than mutation of state or explicit function calls
  - This allows Node.JS to operate very effeciently by keeping threads active and ready to service new request. 
 
+ # Diving in - EventEmitter (Continued)
+ - Objects that extend EventEmitter dispatch events to listeners (functions) 
+ - While NodeJS is asynchronous, EventEmitter dispatches events synchronously (in the order in which they are registered)
+ - EventEmitter.on() is used to register a listener. 
+ - Events are emitted using the emit() method
 
  
   
