@@ -35,9 +35,7 @@ Node is not a server, it is just a platform on which one can be built
  - Node.JS can be downloaded from https://nodejs.org (this talk assumes 6.2.1 or higher, but should work on 4.4.X)
  - Can be installed on Windows, Mac, or Linux
  - May not want to install via apt-get or distro package manager if you are wanting later versions
---
- **Node.JS versions prior to 4.X.X are using older versions of V8, if you want ES6 support you should use 4.X.X or higher
---
+ - **Node.JS versions prior to 4.X.X are using older versions of V8, if you want ES6 support you should use 4.X.X or higher
  - NVM (node version manager) can also be used to install Node.JS
  - To run a script, execute node <scriptname>.js
 
@@ -49,6 +47,12 @@ Node is not a server, it is just a platform on which one can be built
  - Synchronous can be easier to use, however comes at a performance penalty
  - Asynchronous can be slightly more difficult but can have huge performance implications.
 
+ # Diving in - EventEmitter and Event Loop
+ - Node.JS uses an event loop/emitter pattern similar to EventMachine for Ruby
+ - "Things Happen" based on events that occur rather than mutation of state or explicit function calls
+ - This allows Node.JS to operate very effeciently by keeping threads active and ready to service new request. 
+
+
  
   
-
+ 
