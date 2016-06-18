@@ -47,11 +47,14 @@ Node is not a server, it is just a platform on which one can be built
  - Synchronous can be easier to use, however comes at a performance penalty
  - Asynchronous can be slightly more difficult but can have huge performance implications.
 
+---
+
  # Diving in - EventEmitter and Event Loop
  - Node.JS uses an event loop/emitter pattern similar to EventMachine for Ruby
  - "Things Happen" based on events that occur rather than mutation of state or explicit function calls
  - This allows Node.JS to operate very effeciently by keeping threads active and ready to service new request. 
 
+---
  # Diving in - EventEmitter (Continued)
  - Objects that extend EventEmitter dispatch events to listeners (functions) 
  - While NodeJS is asynchronous, EventEmitter dispatches events synchronously (in the order in which they are registered)
