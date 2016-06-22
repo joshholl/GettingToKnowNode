@@ -1,66 +1,142 @@
-# Getting to Know Node.JS
+class: center, middle
+
+# Getting to know Node.JS
+
 ---
-
-# What is Node.JS
-
-Node.JS is an event-driven, asynchrony javascript backend platform built upon Google's V8 engine.
+# Intended Audience
 
 --
-Node is not a server, it is just a platform on which one can be built
+
+- People who have some exposure to development and have a cursory knowledge of programming in general
+
+--
+
+- People who are not Node.js experts
 
 ---
-# History of Node.JS
+# What are we going to cover.
 
- - Created by Ryan Dahl in 2009 and soon sponsered by Joyent
- - In 2011 NPM (Node Package Manager) was introduced to allow easier sharing of modules
- - Also in 2011, Microsoft and Joyent worked together to create a native Windows implementation of Node JS.
- - 2012 Dahl steps aside for NPM creator Isaac Schlueter to take over
- - 2014 Schlueter steps asside handing leadership over to Timothy Fontaine
- - At the end of 2014, io.js, a fork of Node.js, is created due to conflict with how Joyent was governing the platform. io.js main goal was to make governance open and to keep the platfom up-to-date with V8 engine updates.
- - 2015 a neutral Node.js foundation was created and both the io.js and Node.js communities agreed to work together under the new foundation. Later that year Node.js and io.js merged
- - 2016 io.js effectively dead and recommending users go back to Node.js
+--
 
----
-# Why Node.js?
+- What Node.JS is and is not
 
-**Its important to remember that Node.js is not a server, its a platform on which to create servers.**
+--
 
- - By using non-blocking, asynchronous i/o Node.JS is exceptionally fast
- - Thanks to Angular and other Front End Frameworks, Javascript is no longer just some glue for interactivity, its a First Class language for creating applications. Node.JS makes Javascript a first class language for the back end.
- - Node.JS is easily scaled. The builtin cluster module allows you to share a single port across multiple child processes. 
- - Easy setup. Unlike Apache and the myriad of *.conf files, you deploy node and then your code.
+- How Node.JS works
 
----
-# Getting Started
- - Node.JS can be downloaded from https://nodejs.org (this talk assumes 6.2.1 or higher, but should work on 4.4.X)
- - Can be installed on Windows, Mac, or Linux
- - May not want to install via apt-get or distro package manager if you are wanting later versions
- - **Node.JS versions prior to 4.X.X are using older versions of V8, if you want ES6 support you should use 4.X.X or higher
- - NVM (node version manager) can also be used to install Node.JS
- - To run a script, execute node <scriptname>.js
+--
 
----
- # Diving in - Non-Blocking, Asynchronous I/O
- - I/O uses two different concurrency models: Synchronous and Asynchronous
- - In synchronous i/o, a file read will block waiting on the file system for data before continuing on.
- - In asynchronous, one or more parts of an application may continue and wait for a callback to notify of a change
- - Synchronous can be easier to use, however comes at a performance penalty
- - Asynchronous can be slightly more difficult but can have huge performance implications.
+- The EventEmitter Pattern
+
+--
+
+- Streams
 
 ---
 
- # Diving in - EventEmitter and Event Loop
- - Node.JS uses an event loop/emitter pattern similar to EventMachine for Ruby
- - "Things Happen" based on events that occur rather than mutation of state or explicit function calls
- - This allows Node.JS to operate very effeciently by keeping threads active and ready to service new request. 
+# What Node.JS is not
+
+--
+
+- A server
+
+--
+
+- The answer to all of your problems
+
+???
+
+Node.js is not an javascript based server, although it does lend itself well to creating servers written in javascript. Therefore like all tools it is not the ultimate answer to all of your problems, but it can be used to create scalable backend services.
 
 ---
- # Diving in - EventEmitter (Continued)
- - Objects that extend EventEmitter dispatch events to listeners (functions) 
- - While NodeJS is asynchronous, EventEmitter dispatches events synchronously (in the order in which they are registered)
- - EventEmitter.on() is used to register a listener. 
- - Events are emitted using the emit() method
+# What is Node.JS
 
+ Node.JS is an event-driven, non-blocking I/O javascript backend platform built upon Google's V8 engine.
  
-  
+???
+
+V8 is a javascript implementation written in C++ and created/maintained by Google. Node.js is built upon this engine and adds functionality via libuv to make blocking synchronous libraries asynchronous
  
+---
+# Why Node.JS
+
+--
+
+- Allows developers to use nothing but javascript (Mostly)
+
+???
+
+Javascript is lingua franca of the internet and has long been ubiquitous with creating dynamic client side content. Node.js allows developers to use the same languages and tooling that the have become accustomed to for front end development on the back end. However, if you so desire, you can write modules that interface with V8 in C++. 
+
+--
+
+- Ease of use
+
+???
+
+Unlike Apache, Node.js does not have a heirarchal configuration or any real configuration outside of what is needed to execute a given node.js script. 
+
+--
+
+- Scalability and Speed
+
+???
+Node.js scales well in part because it does not spin up threads or fork processes for each request. Therefore node.js has less overhead for each request processing. Additionally since node.js is asynchronous the actual handling of each request can be delegated allowing the primary thread to accept more request rather than completeing each one before accepting a new one. Finally, given that a most applications on the internet use JSON for a data transfer node.js has an advantage by being javascript and having supported baked in unlike .NET, PHP, or JAVA which rely on marshalling libraries to convert between JSON and the native language.
+
+---
+# Brief History of Node.JS
+
+- 2009  Ryan Dahl Creates Node.JS
+- 2011 NPM is created
+	- Microsoft Works with Joyent to bring Node.JS to windows
+- 2014 Node.JS is forked to IO.js
+- 2015 Node foundation is created and later IO.js and Node.js merge
+
+
+---
+# How it all works - Non-Blocking I/O
+	
+---
+# How it all works - Event-Driven
+
+--
+
+- Everything that happens is an event (request recieved, response sent, error)
+
+--
+
+- Application logic flows based on one of these events
+
+---
+
+# EventEmitter - Overview
+
+
+---
+
+# EventEmitter - Example
+
+---
+
+# EventEmitter - Creating Your Own
+
+ - Extend from the EventEmitter class (utils.inherits if not using ES6)
+ 
+---
+
+# Streams - Overview
+
+---
+
+# Streams - Example
+
+---
+
+# Putting it All together
+
+---
+
+# Resources 
+
+
+
