@@ -95,13 +95,29 @@ Node.js scales well in part because it does not spin up threads or fork processe
 
 ---
 # How it all works - Non-Blocking I/O
-	
+
+A restaurant that can only serve one patron at a time will not stay in business
+
+???
+
+A major portion of the magic that makes node js is non blocking io. If you're not familiar with non blocking io it can be easily relatable to every day life. And like every day life there are times where blocking is a good thing, and a time when it is not. 
+
+A good example of when its acceptable to block is in your morning routine. A critical part of every morning routine is showering and getting dressed. Both are time consuming operations however, for best results you should always complete showering prior to starting to get dressed. Doing both simulataneously may be possible (and might cut down on laundry detergent usage) it is not recommended to do both.
+
+Meanwhile, other things lend themselves quite well to non blocking logic. No morning is complete without coffee. Also if you have time to make coffee you probably have enough time to eat breakfast and check your email. Each task could be performed simulataneously with out issue. I perfectly logical path would be to start your coffee, put your pop tarts in the toaster, then get out your phone on start reading your email. Once the coffee is done you can fix it to your liking then go back to email. Once the pop tarts are done you can start eating all the while switching contexts and reading email in between.
+
+This leads us back to the point of this slide, a restaurant that can only serve one patron at a time will go out of business. Imagine if your server took your food and drink order, made your drinks and stood by the window waiting for your food to come up. Once that was up they brought it to you. While you ate the server went off to some corner to wait for you to finish, once you finished they would bring your check, you pay and then and only then could the server wait on the next patron...as i think we all could imagine, the yelp reviews for this resteraunt would be brutal
+
 ---
 # How it all works - Event-Driven
 
 --
 
 - Everything that happens is an event (request recieved, response sent, error)
+
+???
+
+And like all analogies that are used to explain something the restaurant example works perfectly to explain event driven applications. In a restaurant there are at least three systems in play, the server, the hungry patron, and the kitchen staff. The amount of events that a single system can perform or too numerous to list. But a quick sumation could be that the patron is seated, orders food, and eats food. the server takes order, brings the food and refills drinks, mean while the kitching staff recieves orders and cooks food. 
 
 --
 
