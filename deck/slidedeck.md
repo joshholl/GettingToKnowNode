@@ -168,7 +168,7 @@ Listeners are registered with an on() method that specifies an event name, and t
 ```javascript
 
 eventEmitter.on('orderPlaced', (order)=> {
-  order.forEach((item)=> { startCooking(item); })
+  order.forEach((item)=> { startCooking(item); });
 });
 
 ```
