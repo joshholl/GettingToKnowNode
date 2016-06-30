@@ -1,6 +1,6 @@
 class: center, middle
 
-# Getting to know Node.JS
+# Getting to know Node.js
 
 ---
 # Intended Audience
@@ -21,11 +21,11 @@ class: center, middle
 
 --
 
-- What Node.JS is and is not
+- What Node.js is and is not
 
 --
 
-- How Node.JS works
+- How Node.js works
 
 --
 
@@ -37,7 +37,7 @@ class: center, middle
 
 ---
 
-# What Node.JS is not
+# What Node.js is not
 
 --
 
@@ -52,24 +52,48 @@ class: center, middle
 Node.js is not an javascript based server, although it does lend itself well to creating servers written in javascript. Therefore like all tools it is not the ultimate answer to all of your problems, but it can be used to create scalable backend services.
 
 ---
-# What is Node.JS
+# What is Node.js
 
- Node.JS is an event-driven, non-blocking I/O javascript backend platform built upon Google's V8 engine.
+Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
+
+ -- Node.js Foundation
 
 ???
 
-V8 is a javascript implementation written in C++ and created/maintained by Google. Node.js is built upon this engine and adds functionality via libuv to make blocking synchronous libraries asynchronous
+V8 is a JavaScript implementation written in C++ and created/maintained by Google. Node.js is built upon this engine and adds functionality via libuv to make blocking synchronous libraries asynchronous
 
 ---
-# Why Node.JS
+# What is Node.js - Components
+
+![Default-aligned image](images/architecture.png)
+
+???
+
+This is a simplistic version of the Node.js architecture. However for an initial look into what node is and what it is not, it will suffice. As you can see Node.js is built upon Google's V8 and Libuv as we previously mentioned. At this same layer there are modules to support DNS, Crypto, The event loop. At the next layer is the Node.js api which has a handful of baked in modules upon which your applications will be built. At the top is npm. NPM is not part of the actual runtime stack however has earned its place in the architecture because of the shear number of modules that third party developers have created. Your application can either be built upon the vanilla node.js api, or a combination of it and modules sourced via NPM
+
+---
+# Brief History of Node.js
+
+- 2009  Ryan Dahl Creates Node.js
+- 2011 NPM is created
+	- Microsoft Works with Joyent to bring Node.js to windows
+- 2014 Node.js is forked to IO.js
+- 2015 Node foundation is created and later IO.js and Node.js merge
+
+---
+# Why Node.js
 
 --
 
-- Allows developers to use nothing but javascript (Mostly)
+- Allows developers to use nothing but JavaScript (Mostly)
+
+--
+
+- Massive package ecosystem
 
 ???
 
-Javascript is lingua franca of the internet and has long been ubiquitous with creating dynamic client side content. Node.js allows developers to use the same languages and tooling that the have become accustomed to for front end development on the back end. However, if you so desire, you can write modules that interface with V8 in C++.
+JavaScript is lingua franca of the internet and has long been ubiquitous with creating dynamic client side content. Node.js allows developers to use the same languages and tooling that the have become accustomed to for front end development on the back end. However, if you so desire, you can write modules that interface with V8 in C++.
 
 --
 
@@ -77,24 +101,24 @@ Javascript is lingua franca of the internet and has long been ubiquitous with cr
 
 ???
 
-Unlike Apache, Node.js does not have a heirarchal configuration or any real configuration outside of what is needed to execute a given node.js script.
+Unlike Apache, Node.js does not have a hierarchal configuration or any real configuration outside of what is needed to execute a given node.js script.
 
 --
 
 - Scalability and Speed
 
 ???
-Node.js scales well in part because it does not spin up threads or fork processes for each request. Therefore node.js has less overhead for each request processing. Additionally since node.js is asynchronous the actual handling of each request can be delegated allowing the primary thread to accept more request rather than completeing each one before accepting a new one. Finally, given that a most applications on the internet use JSON for a data transfer node.js has an advantage by being javascript and having supported baked in unlike .NET, PHP, or JAVA which rely on marshalling libraries to convert between JSON and the native language.
+Node.js scales well in part because it does not spin up threads or fork processes for each request. Therefore node.js has less overhead for each request processing. Additionally since node.js is asynchronous the actual handling of each request can be delegated allowing the primary thread to accept more request rather than completing each one before accepting a new one. Finally, given that a most applications on the internet use JSON for a data transfer node.js has an advantage by being JavaScript and having supported baked in unlike .NET, PHP, or JAVA which rely on marshalling libraries to convert between JSON and the native language.
 
 ---
-# Brief History of Node.JS
 
-- 2009  Ryan Dahl Creates Node.JS
-- 2011 NPM is created
-	- Microsoft Works with Joyent to bring Node.JS to windows
-- 2014 Node.JS is forked to IO.js
-- 2015 Node foundation is created and later IO.js and Node.js merge
+# How it all works - Node.js and I/O
 
+I/O is universally slow, Node.js accepts this and allows you to continue working while the I/O systems do their work.
+
+???
+
+Even though speeds are constantly increasing; consuming I/O sources ranging from network/sockets to file system and event memory access are slow. Node.js accepts this and addresses this problem with its Non-Blocking I/O model which allows applications to keep doing work while waiting for some I/O task to complete.
 
 ---
 # How it all works - Non-Blocking I/O
@@ -103,18 +127,19 @@ A restaurant that can only serve one patron at a time will not stay in business
 
 ???
 
-A major portion of the magic that makes node js is non blocking io. If you're not familiar with non blocking io it can be easily relatable to every day life. And like every day life there are times where blocking is a good thing, and a time when it is not.
+To really understand how Node.js benefits from Non-Blocking I/O lets take a look at a real life example that benefits from both blocking and Non-Blocking interactions. The example I am going to use is that of a restaurant.
 
-A good example of when its acceptable to block is in your morning routine. A critical part of every morning routine is showering and getting dressed. Both are time consuming operations however, for best results you should always complete showering prior to starting to get dressed. Doing both simultaneously may be possible (and might cut down on laundry detergent usage) it is not recommended to do both.
-
-Meanwhile, other things lend themselves quite well to non blocking logic. No morning is complete without coffee. Also if you have time to make coffee you probably have enough time to eat breakfast and check your email. Each task could be performed simultaneously with out issue. I perfectly logical path would be to start your coffee, put your pop tarts in the toaster, then get out your phone on start reading your email. Once the coffee is done you can fix it to your liking then go back to email. Once the pop tarts are done you can start eating all the while switching contexts and reading email in between.
-
-This leads us back to the point of this slide, a restaurant that can only serve one patron at a time will go out of business. Imagine if your server took your food and drink order, made your drinks and stood by the window waiting for your food to come up. Once that was up they brought it to you. While you ate the server went off to some corner to wait for you to finish, once you finished they would bring your check, you pay and then and only then could the server wait on the next patron...as i think we all could imagine, the yelp reviews for this restaurant would be brutal
+A restaurant that can only serve one patron at a time will go out of business. Imagine if your server took your food and drink order, made your drinks and stood by the window waiting for your food to come up. Once that was up they brought it to you. While you ate the server went off to some corner to wait for you to finish, once you finished they would bring your check, you pay and then and only then could the server wait on the next patron...as I think we all could imagine, the yelp reviews for this restaurant would be brutal.
 
 ---
-# How it all works - Modules
 
+# How it all works - Blocking I/O
 
+Every Entrée must be prepared a certain way to be correct.
+
+???
+
+The important part of this statement is the "...to be correct" part. This is because with rare exceptions, there is a certain flow that must be maintained in order to make entries. For example, if you were to order a burger and find that the patty was not cooked, was placed on top of the bun because the bun was not sliced and the lettuce had not been washed. I am going to go out on a limb here and guess that you wouldn't want to eat that sandwich. Furthermore, you would most likely send it back and/or run for your life with serious doubts of what type of operation they were running.
 
 ---
 # How it all works - Event-Driven
@@ -137,7 +162,7 @@ And like all analogies that are used to explain something the restaurant example
 
 --
 
-- The core module backing the majority of Node.JS event-driven architecture.
+- The core module backing the majority of Node.js event-driven architecture.
 
 --
 
@@ -145,7 +170,7 @@ And like all analogies that are used to explain something the restaurant example
 
 
 ???
-If you are coming from a ruby world, EventEmitter functions a lot like EventMachine. However if you're not familiar with nodes EventEmitter or ruby's event machine, simplistic model you can use to conceptualize what an event emitter is that of the pub/sub pattern. However in Node.JS EventEmitter is more than just a module, it is central to everything that node does and is the basis for a decent chuck of node.js core api.
+If you are coming from a ruby world, EventEmitter functions a lot like EventMachine. However if you're not familiar with nodes EventEmitter or ruby's event machine, simplistic model you can use to conceptualize what an event emitter is that of the pub/sub pattern. However in Node.js EventEmitter is more than just a module, it is central to everything that node does and is the basis for a decent chuck of node.js core api.
 
 ---
 # EventEmitter - emit()
@@ -187,13 +212,13 @@ Furthermore all of the rules for what makes a fat arrow function valid hold true
 
 const kitchen = new NodeKitchen();
 
-kitchen.on('orderPlaced', (items) => {
+kitchen.on('orderUp', (items) => {
   items.forEach((item)=> {
-    console.log(`Cooking ${item}!`);
+    console.log(`Finished Cooking ${item}!`);
   })
 });
 
-kitchen.emit('orderPlaced', ['Node Nuggets', 'ES Fish sticks']);
+kitchen.emit('orderUp', ['Node Nuggets', 'ES Fish sticks']);
 
 ```
 
@@ -208,6 +233,8 @@ kitchen.emit('orderPlaced', ['Node Nuggets', 'ES Fish sticks']);
 # EventEmitter - Creating Your Own
 
  - Extend from the EventEmitter class (utils.inherits if not using ES6)
+
+ - Not necessary but can be helpful to wrap on() and emit() in functions that provide business logic
 
 ---
 
