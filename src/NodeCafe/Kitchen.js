@@ -10,7 +10,7 @@ module.exports =  class Kitchen extends EventEmitter {
 
   orderIn(order, server) {
     order.number = ++this.orderNumber;
-    this.pendingOrders.push(order);
+    this.pendingOrders.push(order);	
     this.on('orderUp', (completedOrder) => {
       if(completedOrder.number === order.number) {
         server.serveFood(completedOrder);
