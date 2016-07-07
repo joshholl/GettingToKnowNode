@@ -2,9 +2,10 @@
 const Kitchen = require('./Kitchen.js');
 const Server = require('./Server.js');
 const Patron = require('./Patron.js');
+const KITCHEN_DELAY = 2000;
 
 let kitchen = new Kitchen();
-kitchen.open();
+kitchen.open(KITCHEN_DELAY);
 
 let server = new Server(kitchen);
 let soleSurvivor = new Patron("Sole Survivor");
