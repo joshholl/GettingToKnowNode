@@ -238,11 +238,61 @@ kitchen.emit('orderUp', ['Node Nuggets', 'ES Fish sticks']);
 
 ---
 
+
 # Streams - Overview
+
+  - Every Stream is an *EventEmitter*
+  - Four Types of streams (Readable, Writable, Duplex, and Transform)
+
+???
 
 ---
 
+# Streams - Readable
+
+  An EventEmitter wrapper that reads data from a source
+
+--
+
+Main events
+- Data: Data is available on the stream
+- End: When (and only when) the end of the data is reached
+
+---
+
+# Streams - Writable
+
+An EventEmitter that writes data to a destination
+
+???
+
+Unlike a readable stream, you do not have to care about the events that occur, you instead will be working with the write() methods, events that occur tend to happen out of error conditions (the destination closed or something else)
+--
+ - uses write() to write data to a destination
+
+---
+
+# Streams - Duplex
+
+Duplex Streams are streams that implement both Readable and Writeable
+
+???
+
+Primary example is a Socket
+
+---
+
+# Streams - Transform
+
+  A Duplex stream that reads and writes data while transforming it from one type data to another
+---
+
+???
+
+Good examples are zlib which allows you to compress/decompress data and crypto which allows you to encrypt and decrypt data.
+---
 # Streams - Example
+
 
 ---
 
