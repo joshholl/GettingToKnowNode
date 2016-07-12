@@ -295,7 +295,6 @@ Primary example is a Socket
 # Streams - Transform
 
   A Duplex stream that reads and writes data while transforming it from one type data to another
----
 
 ???
 
