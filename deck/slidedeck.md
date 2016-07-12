@@ -5,17 +5,27 @@ class: center, middle
 ---
 # Intended Audience
 
+???
+
+As we deal with clients whether internal or external its always important to set expectations. I imagine you are coming into this talk to learn something about Node.js, it is reasonable for you to expect that I will present this in a manner that is easy to understand, am informative, and generally not wasting your time. Can we all agree that this are some reasonable expectations? Awesome! now that i you have your expectations of me as the producer, I have some expectations of you as the consumer. So lets get started by going over those.
+
 --
 
 - People who have some exposure to development and have a cursory knowledge of programming in general
+
+???
+Now lets be clear this does not mean that i exepct you to be programming geniuses or even a developer as your primary job function. This talk does include code and will be discussing problems in computer science so the ability to follow along with patterns etc is very important.
+
+--
+
+  - ES6 exposure is helpful but not necessary
 
 --
 
 - People who are not Node.js experts
 
---
 
-- ES6 exposure is helpful but not necessary
+
 ---
 # What are we going to cover.
 
