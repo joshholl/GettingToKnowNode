@@ -1,6 +1,15 @@
 class: center, middle
 
 # Getting to know Node.js
+---
+
+# Getting to know me
+
+ Hi, I am josh Hollandsworth
+
+???
+ College drop out that spent too much time working on personal projects to go to class, went to work at a telco where i wrote middleware and backend services to integrate
+ voip and iptv systems, before leaving for scottrade in 2014, came to asynchrony in July of last year
 
 ---
 # Intended Audience
@@ -265,8 +274,30 @@ kitchen.emit('orderUp', ['Node Nuggets', 'ES Fish sticks']);
 --
 
 Main events
-- Data: Data is available on the stream
-- End: When (and only when) the end of the data is reached
+- data: Data is available on the stream
+- end: When (and only when) the end of the data is reached
+
+---
+
+# Streams - Readable (Example)
+
+```javascript
+
+let fs = require('fs');
+
+let input = fs.createReadStream('words');
+let words ='';
+input.on('data', (chunk)=> { words += chunk; });
+input.on('end', () => { console.log(words); });
+
+```
+???
+
+import the fs module to read/write from file system
+create empty string "words"
+
+every time a chunk is read, append it to the words string
+when the end of the stream is read, log the contents of words to the console.
 
 ---
 
@@ -276,15 +307,59 @@ An EventEmitter that writes data to a destination
 
 ???
 
-Unlike a readable stream, you do not have to care about the events that occur, you instead will be working with the write() methods, events that occur tend to happen out of error conditions (the destination closed or something else)
+Unlike a readable stream, you do not have to care about the events that occur, you instead will be working with the write() methods, events that occur tend to happen out of error conditions (the destination closed or something else) or by piping data
 --
+
  - uses write() to write data to a destination
+
+--
+
+ - pipe - event emitted when input stream is piped to an output stream
+
+---
+
+# Streams - Writable (Example)
+
+```javascript
+
+let fs = require('fs');
+let output = fs.createWriteStream('out.txt');
+
+output.write('foo');
+output.write('\tbar');
+
+output.end();
+```
+
+---
+
+# Streams - Piping
+
+ Piping is based on the idea of pipes in unix/linux allowing you to send output of one stream to another as input.
+
+---
+
+# Streams - Piping (Example)
+
+```javascript
+
+let fs = require('fs');
+let zlip = rquire('zlib');
+
+let gzip = zlip.createGzip();
+
+let input = fs.createReadStream('input.txt');
+let output = fs.createWriteStream('output.txt.gz')
+
+input.pipe(gzip).pipe(output);
+
+```
 
 ---
 
 # Streams - Duplex
 
-Duplex Streams are streams that implement both Readable and Writeable
+Duplex Streams are streams that implement both Readable and Writable
 
 ???
 

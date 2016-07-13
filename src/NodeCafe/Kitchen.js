@@ -1,7 +1,7 @@
 'use strict';
 const EventEmitter = require('events');
 
-module.exports =  class Kitchen extends EventEmitter {
+module.exports = class Kitchen extends EventEmitter {
   constructor() {
     super();
     this.orderNumber = 0;
@@ -10,7 +10,7 @@ module.exports =  class Kitchen extends EventEmitter {
 
   orderIn(order, server) {
     order.number = ++this.orderNumber;
-    this.pendingOrders.push(order);	
+    this.pendingOrders.push(order);
     this.on('orderUp', (completedOrder) => {
       if(completedOrder.number === order.number) {
         server.serveFood(completedOrder);
@@ -24,6 +24,10 @@ module.exports =  class Kitchen extends EventEmitter {
 
       if(order !== null && order !== undefined) {
         this.emit('orderUp', order);
-      }}, pollingInterval );
+      } else  {
+        console.log('doing kitchen things');
+      }
+
+    }, pollingInterval );
   }
 }
