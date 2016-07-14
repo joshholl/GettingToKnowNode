@@ -435,5 +435,13 @@ const server = http.createServer((req, resp) => {
 | Duplex    | _read, _write, _writev |
 | Transform | _transform, _flush     |
 
-- Only use these methods, do not use their "public" counterparts
+ Only use these methods, do not use their "public" counterparts
 ---
+
+# Resources
+
+ - Node.js Api Documentation https://nodejs.org/api/
+ - Reddit Node Community https://www.reddit.com/r/node
+ - Nodeschool tutorial http://nodeschool.io/
+ - Node Package Manager(npm) https://www.npmjs.com/
+ - Node Version Manager(nvm)         https://github.com/creationix/nvm
