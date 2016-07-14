@@ -357,31 +357,54 @@ input.pipe(gzip).pipe(output);
 
 ---
 
-# Streams - Duplex
+# Streams - Duplex and Transform
 
-Duplex Streams are streams that implement both Readable and Writable
-
-???
-
-Primary example is a Socket
-
----
-
-# Streams - Transform
-
-  A Duplex stream that reads and writes data while transforming it from one type data to another
+ - Both are based on Readable and Writable
+ - Duplex stream implement both Readable and Writable
+ - Transform streams are duplex streams that transform data between read and write operations
 
 ???
 
-Good examples are zlib which allows you to compress/decompress data and crypto which allows you to encrypt and decrypt data.
+Primary example of a duplex stream is a Socket
+
+Good examples Transform are zlib which allows you to compress/decompress data and crypto which allows you to encrypt and decrypt data.
 ---
 # Streams - Example
 
+```javascript
 
+const http = require('http')
+
+const server = http.createServer((req, resp) => {
+  let order ='';
+  req.setEncoding('utf8') ;
+  req.on('data', (chunk) => {
+    order+=chunk;
+  });
+
+  req.on('end',()=> {
+    if(order.indexOf('moldy') === -1) {
+      resp.write(`cooking ${order}`)
+      resp.end()
+    } else {
+      resp.statusCode = 400;
+      resp.end(`the health department does not like when we serve ${order}`);
+    }
+  });
+});
+
+
+```
 ---
 
-# Putting it All together
+# Streams - Creating your own
 
+| Streams   | Methods to Implement   |
+|-----------|------------------------|
+| Readable  | _read                  |
+| Writable  | _write, _writev        |
+| Duplex    | _read, _write, _writev |
+| Transform | _transform, _flush     |
+
+- Only use these methods, do not use their "public" counterparts
 ---
-
-# Resources
