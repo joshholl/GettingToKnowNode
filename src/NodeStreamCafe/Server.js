@@ -19,7 +19,7 @@ module.exports = class Server extends Duplex {
   _write(chunk, encoding, callback) {
     if(Buffer.isBuffer(chunk)) {
       let item = chunk.toString('ascii');
-      if(item.indexOf('cooked') === -1) {
+      if(item.indexOf('Cooked') === -1) {
         this.orderedItems.push(chunk);
         console.log(`[Server] Recieved order for ${item}`);
       } else {
