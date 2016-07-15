@@ -48,7 +48,7 @@ Now lets be clear this does not mean that i exepct you to be programming geniuse
 
 --
 
-- The EventEmitter Pattern
+- EventEmitter
 
 --
 
@@ -130,13 +130,8 @@ Unlike Apache, Node.js does not have a hierarchal configuration or any real conf
 Node.js scales well in part because it does not spin up threads or fork processes for each request. Therefore node.js has less overhead for each request processing. Additionally since node.js is asynchronous the actual handling of each request can be delegated allowing the primary thread to accept more request rather than completing each one before accepting a new one. Finally, given that a most applications on the internet use JSON for a data transfer node.js has an advantage by being JavaScript and having supported baked in unlike .NET, PHP, or JAVA which rely on marshalling libraries to convert between JSON and the native language.
 
 ---
-# What are we going to cover.
 
-
-- ~~What Node.js is and is not~~
-
-- How Node.js works
-
+# How Node.js works
 ---
 
 # How it all works - Node.js and I/O
@@ -185,13 +180,7 @@ And like all analogies that are used to explain something the restaurant example
 
 ---
 
-# What are we going to cover.
-
-- ~~What Node.js is and is not~~
-
-- ~~How Node.js works~~
-
-- The EventEmitter Pattern
+# EventEmitter
 
 ---
 
@@ -275,15 +264,7 @@ kitchen.emit('orderUp', ['Node Nuggets', 'ES Fish sticks']);
 
 ---
 
-# What are we going to cover.
-
-- ~~What Node.js is and is not~~
-
-- ~~How Node.js works~~
-
-- ~~The EventEmitter Pattern~~
-
-- Streams
+#  Streams
 
 ---
 
@@ -397,7 +378,9 @@ input.pipe(gzip).pipe(output);
 Primary example of a duplex stream is a Socket
 
 Good examples Transform are zlib which allows you to compress/decompress data and crypto which allows you to encrypt and decrypt data.
+
 ---
+
 # Streams - Example
 
 ```javascript
