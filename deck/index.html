@@ -8,16 +8,30 @@
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body { font-family: 'Droid Serif'; }
+      body {
+        font-family: 'Droid Serif';
+      }
+
+      table, tr,td {
+        border: 1px solid black;
+        border-spacing: 0px;
+      }
+
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
+        color:rgb(200,0,0);
+      }
+      .remark-slide-content {
+        color: rgb(26,29,60);
+        background-color: rgb(249,249,249);
+
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
     </style>
   </head>
   <body>
-    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    <script src="scripts/remark-latest.min.js">
     </script>
     <script>
       var slideshow = remark.create({sourceUrl: "slidedeck.md"});

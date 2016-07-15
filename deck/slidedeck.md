@@ -2,10 +2,8 @@ class: center, middle
 
 # Getting to know Node.js
 ---
-
+class: center, middle
 # Getting to know me
-
- Hi, I am josh Hollandsworth
 
 ???
  College drop out that spent too much time working on personal projects to go to class, went to work at a telco where i wrote middleware and backend services to integrate
@@ -48,13 +46,14 @@ Now lets be clear this does not mean that i exepct you to be programming geniuse
 
 --
 
-- The EventEmitter Pattern
+- EventEmitter
 
 --
 
 - Streams
 
 ---
+
 
 # What Node.js is not
 
@@ -130,13 +129,8 @@ Unlike Apache, Node.js does not have a hierarchal configuration or any real conf
 Node.js scales well in part because it does not spin up threads or fork processes for each request. Therefore node.js has less overhead for each request processing. Additionally since node.js is asynchronous the actual handling of each request can be delegated allowing the primary thread to accept more request rather than completing each one before accepting a new one. Finally, given that a most applications on the internet use JSON for a data transfer node.js has an advantage by being JavaScript and having supported baked in unlike .NET, PHP, or JAVA which rely on marshalling libraries to convert between JSON and the native language.
 
 ---
-# What are we going to cover.
-
-
-- ~~What Node.js is and is not~~
-
-- How Node.js works
-
+class: center, middle
+# How Node.js works
 ---
 
 # How it all works - Node.js and I/O
@@ -184,14 +178,8 @@ And like all analogies that are used to explain something the restaurant example
 - Application logic flows based on one of these events
 
 ---
-
-# What are we going to cover.
-
-- ~~What Node.js is and is not~~
-
-- ~~How Node.js works~~
-
-- The EventEmitter Pattern
+class: center, middle
+# EventEmitter
 
 ---
 
@@ -274,16 +262,8 @@ kitchen.emit('orderUp', ['Node Nuggets', 'ES Fish sticks']);
  - Not necessary but can be helpful to wrap on() and emit() in functions that provide business logic
 
 ---
-
-# What are we going to cover.
-
-- ~~What Node.js is and is not~~
-
-- ~~How Node.js works~~
-
-- ~~The EventEmitter Pattern~~
-
-- Streams
+class: center, middle
+#  Streams
 
 ---
 
@@ -397,7 +377,9 @@ input.pipe(gzip).pipe(output);
 Primary example of a duplex stream is a Socket
 
 Good examples Transform are zlib which allows you to compress/decompress data and crypto which allows you to encrypt and decrypt data.
+
 ---
+
 # Streams - Example
 
 ```javascript
@@ -444,4 +426,14 @@ const server = http.createServer((req, resp) => {
  - Reddit Node Community https://www.reddit.com/r/node
  - Nodeschool tutorial http://nodeschool.io/
  - Node Package Manager(npm) https://www.npmjs.com/
- - Node Version Manager(nvm)         https://github.com/creationix/nvm
+ - Node Version Manager(nvm) https://github.com/creationix/nvm
+---
+
+class: center, middle
+
+# Questions?
+
+---
+class: center, middle
+
+# Thank You!
